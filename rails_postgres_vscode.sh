@@ -50,7 +50,7 @@ echo "Passo 03 - Checando VS Code"
 
 # ======================================================= VS CODE =====================================================================#
 
-if dpkg -l | grep -q "code"; then
+if command -v code &> /dev/null; then
   echo "O VS Code está instalado."
 else
   echo "O VS Code NÃO está instalado."
