@@ -92,7 +92,7 @@ echo "Passo 04 - Instalando NVM e Yarn"
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 npm install --global yarn
-echo "Escolha a versão do node"
+nvm install 22
 
 echo "Passo 04 - FIM"
 
@@ -105,4 +105,4 @@ echo "Passo 05 - FIM"
 
 echo "INSTALAÇÃO CONCLUÍDA!!"
 
-eche "Para as mudanças fazerem efeito você precisa modificar as preferência do terminal para executar com o login do shel"
+echo "Para as mudanças fazerem efeito você precisa modificar as preferência do terminal para executar com o login do shel"
