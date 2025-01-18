@@ -1,14 +1,24 @@
 # Script de instalação rápida do ambiente de trabalho
 
-## Baixe o repositório
+## Usando scripts
+
+Você pode executar os scripts diretamente no seu terminal usando
 
 ~~~bash
-  git clone https://github.com/angelianosousa/scripts_rapidos
+  \curl -sL https://raw.githubusercontent.com/angelianosousa/scripts_instala-o/refs/heads/main/rails_postgres_vscode.sh | bash
 ~~~
 
-## Preparndo arquivos
+~~~bash
+  \curl -sL https://raw.githubusercontent.com/angelianosousa/scripts_instala-o/refs/heads/main/flutter_android.sh | bash
+~~~
 
-* Para executar os arquivos você precisa torná-los executaveis com o comando:
+## Baixando e executando scripts
+
+~~~bash
+  git clone https://github.com/angelianosousa/scripts_instala-o.git
+~~~
+
+Se quiser pode baixar o repositório e executar o scripts, só não esqueça de tornar o arquivo executável como indicado abaixo:
 
 ~~~bash
   chmod +x rails_postgres_vscode.sh

@@ -6,7 +6,7 @@ PACKAGES=(
   # Postgres packages
   "postgresql" "postgresql-client"
   # Javascript
-  "npm"
+  "npm" "build-essential" "libssl-dev"
 )
 
 echo "Passo 01 - Instalando dependencias"
@@ -90,9 +90,8 @@ echo "Passo 03 - FIM"
 
 echo "Passo 04 - Instalando NVM e Yarn"
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+curl -O https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 npm install --global yarn
-nvm install 22
 
 echo "Passo 04 - FIM"
 
@@ -105,4 +104,5 @@ echo "Passo 05 - FIM"
 
 echo "INSTALAÇÃO CONCLUÍDA!!"
 
-echo "Para as mudanças fazerem efeito você precisa modificar as preferência do terminal para executar com o login do shel"
+echo "1. Para as mudanças fazerem efeito você precisa modificar as preferência do terminal para executar com o login do shell"
+echo "2. Instale a última versão do node com nvm install node"
