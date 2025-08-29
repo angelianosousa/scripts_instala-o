@@ -2,14 +2,20 @@
 
 # Lista de pacotes a serem instalados
 PACKAGES=(
-  "curl" "git" "openssh-client" "vim" "snap"
+  "curl" "git" "openssh-client" "vim" "snap" "gnupg" "lsb-release" "weasyprint"
   # Postgres packages
-  "postgresql" "postgresql-client"
+  "ca-certificates" "postgresql" "postgresql-client"
   # Javascript
   "npm" "build-essential" "libssl-dev"
 )
 
 echo "Passo 01 - Instalando dependencias"
+
+# Preparando para instalar postgres em versões mais antigas do ubuntu
+sudo install -d /usr/share/postgresql-common/pgdg
+sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
+. /etc/os-release
+sudo sh -c "echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] http://apt-archive.postgresql.org/pub/repos/apt $VERSION_CODENAME-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
 
 echo "Atualizando repositórios..."
 sudo apt update
@@ -34,7 +40,7 @@ if [ -d "$HOME/.rvm" ]; then
     echo "O RVM está instalado."
 else
   echo "O RVM NÃO está instalado."
-  echo "Inslando RVM e Ruby On Rails"
+  echo "Instalando RVM e Ruby On Rails"
   gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
   \curl -sSL https://get.rvm.io | bash -s stable --ruby --rails
   source ~/.rvm/scripts/rvm # Comando para recarregar o shell
@@ -42,7 +48,7 @@ fi
 
 echo "Documentação RVM Install: https://rvm.io/rvm/install"
 
-# ================================================ RVM E RUBY ON RAILS ================================================================#
+# ================================================ RVM E RUBY ON RAILS =====================ff===========================================#
 
 echo "Passo 02 - FIM *"
 
@@ -58,6 +64,7 @@ else
   sudo snap install code --classic
 
   echo "Instalando extensões do vscode"
+
   VSCODE_EXTENSIONS=(
     # HTML extensions
     "zignd.html-css-class-completion" "formulahendry.auto-rename-tag" "aki77.html-erb"
