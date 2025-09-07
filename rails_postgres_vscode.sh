@@ -2,11 +2,11 @@
 
 # Lista de pacotes a serem instalados
 PACKAGES=(
-  "curl" "git" "openssh-client" "vim" "snap" "gnupg" "lsb-release" "weasyprint"
+  "curl" "git" "openssh-client" "vim" "snap" "gnupg" "lsb-release" "weasyprint" "libmagickwand-dev"
   # Postgres packages
-  "ca-certificates" "postgresql" "postgresql-client"
+  "ca-certificates" "postgresql" "postgresql-client" "libpq-dev"
   # Javascript
-  "npm" "build-essential" "libssl-dev"
+  "npm" "build-essential" "libssl-dev" "libssl1.0.0"
 )
 
 echo "Passo 01 - Instalando dependencias"
@@ -16,6 +16,9 @@ sudo install -d /usr/share/postgresql-common/pgdg
 sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc
 . /etc/os-release
 sudo sh -c "echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] http://apt-archive.postgresql.org/pub/repos/apt $VERSION_CODENAME-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
+
+# Adiciona repositório bionic para pacotes do ruby 2.3.8
+echo "deb http://security.ubuntu.com/ubuntu/ bionic-security main" >> /etc/apt/sources.list
 
 echo "Atualizando repositórios..."
 sudo apt update
