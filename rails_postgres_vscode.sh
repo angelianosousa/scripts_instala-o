@@ -18,7 +18,7 @@ sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail htt
 sudo sh -c "echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] http://apt-archive.postgresql.org/pub/repos/apt $VERSION_CODENAME-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
 
 # Adiciona repositório bionic para pacotes do ruby 2.3.8
-echo "deb http://security.ubuntu.com/ubuntu/ bionic-security main" >> /etc/apt/sources.list
+sudo sh -c "echo 'deb http://security.ubuntu.com/ubuntu/ bionic-security main' >> /etc/apt/sources.list"
 
 echo "Atualizando repositórios..."
 sudo apt update
@@ -33,11 +33,9 @@ for PACKAGE in "${PACKAGES[@]}"; do
   fi
 done
 
-echo "Passo 01 - FIM"
+# ================================================ RVM E RUBY ON RAILS ================================================================#
 
 echo "Passo 02 - Checando RVM e Ruby On Rails"
-
-# ================================================ RVM E RUBY ON RAILS ================================================================#
 
 if [ -d "$HOME/.rvm" ]; then
     echo "O RVM está instalado."
@@ -53,11 +51,9 @@ echo "Documentação RVM Install: https://rvm.io/rvm/install"
 
 # ================================================ RVM E RUBY ON RAILS =====================ff===========================================#
 
-echo "Passo 02 - FIM *"
+# ======================================================= VS CODE =====================================================================#
 
 echo "Passo 03 - Checando VS Code"
-
-# ======================================================= VS CODE =====================================================================#
 
 if command -v code &> /dev/null; then
   echo "O VS Code está instalado."
@@ -96,23 +92,23 @@ echo "Documentação VS Code: https://code.visualstudio.com/docs/setup/linux#_in
 
 # ======================================================= VS CODE =====================================================================#
 
-echo "Passo 03 - FIM"
-
 echo "Passo 04 - Instalando NVM e Yarn"
 
-curl -O https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-npm install --global yarn
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
-echo "Passo 04 - FIM"
+nvm install node
+
+export NVM_DIR="$HOME/.nvm"
+
+npm install --global yarn
 
 echo "Passo 05 - LIMPEZA"
 
 sudo apt autoremove -y
 sudo apt clean
 
-echo "Passo 05 - FIM"
+echo '===================================='
+echo "===== INSTALAÇÃO CONCLUÍDA!! ======="
+echo '===================================='
 
-echo "INSTALAÇÃO CONCLUÍDA!!"
-
-echo "1. Para as mudanças fazerem efeito você precisa modificar as preferência do terminal para executar com o login do shell"
-echo "2. Instale a última versão do node com nvm install node"
+echo "Para as mudanças fazerem efeito você precisa modificar as preferência do terminal para executar com o login do shell"
